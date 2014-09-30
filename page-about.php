@@ -1,5 +1,12 @@
-<?php get_header(); ?>
+<?php  
+/*==========================================
+=            About Page Template            =
 
+Template Name: About Page
+==========================================*/
+get_header();
+
+?>
 <!-- ABOUT AREA -->
 		<section>
 			<hr class="no-margin"></hr>
