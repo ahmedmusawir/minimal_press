@@ -1,95 +1,89 @@
 <?php get_header(); ?>
 
-		<!-- PORTFOLIO AREA -->
+	<!-- PORTFOLIO AREA -->
+	<section>
+
 		<hr class="no-margin"></hr>
 
-		<ul class="inline align-center portfolio-header" id="portfolio-sorting">
-			<li><a href="#" class="btn active">All</a></li>
-			<li><a href="#" class="btn">Print</a></li>
-			<li><a href="#" class="btn">Website</a></li>
-			<li><a href="#" class="btn">iOS Apps</a></li>
-		</ul>
+		<?php  
+			wp_nav_menu(array(
+				'theme_location' => 'category-menu',
+				'container' => '',
+				'menu_class' => 'inline align-center portfolio-header',
+				'menu_id' => 'portfolio-sorting'
 
-		<section>
-			<hr class="no-margin"></hr>
+			));
+
+		?>
+
+			<!-- <hr class="no-margin"></hr> -->
 			<div class="middle-container section-content">
 				<div class="container">
-
+				<?php if ( have_posts() ) : ?>
 					<ul class="row portfolio-entries">
-						<li class="col-md-4 box portfolio-entry cat-print">
+					<?php while( have_posts() ) : the_post(); ?>
+
+						<?php  
+							$categories = get_the_category();
+							// $categories = get_categories();
+							//print_r($categories);
+							//return;
+							
+							//if we have any categories, we'll copy them in an array 
+							if ( $categories ) {
+								$class_names = array();
+
+								foreach ( $categories as $category ) {
+									// print_r($category->category_nicename . "<br>");
+									$class_names[] = 'cat-' . $category->category_nicename;
+								}
+
+								$classes = join( ' ', $class_names );
+								// echo $classes;
+
+							}
+							// return;	
+
+						?>
+						<li class="col-md-4 portfolio-entry <?php echo $classes ?>">
+						<article class="box">
 							<div class="hover-state align-right">
-								<p>The title</p>
+								<p><?php the_title(); ?></p>
 								<em>Click to see project</em>
 							</div> <!-- end hover-state -->
-							<figure>
-								<a href="portfolio-single.html">
-									<img src="images/stock/portfolio-thumb-1.jpg" alt="Portfolio entry" />
-								</a>
-							</figure>
+
+							<?php if ( has_post_thumbnail() ) : ?>
+								<figure>
+									<a href="<?php the_permalink(); ?>">
+										<?php the_post_thumbnail(); ?>
+									</a>
+								</figure>
+							<?php endif; ?>
+						</article>	
 						</li>
-						<li class="col-md-4 box portfolio-entry cat-website cat-ios-apps">
-							<div class="hover-state align-right">
-								<p>The title</p>
-								<em>Click to see project</em>
-							</div> <!-- end hover-state -->
-							<figure>
-								<a href="portfolio-single.html">
-									<img src="images/stock/portfolio-thumb-2.jpg" alt="Portfolio entry" />
-								</a>
-							</figure>
-						</li>
-						<li class="col-md-4 box portfolio-entry cat-print">
-							<div class="hover-state align-right">
-								<p>The title</p>
-								<em>Click to see project</em>
-							</div> <!-- end hover-state -->
-							<figure>
-								<a href="portfolio-single.html">
-									<img src="images/stock/portfolio-thumb-3.jpg" alt="Portfolio entry" />
-								</a>
-							</figure>
-						</li>
-						<li class="col-md-4 box portfolio-entry cat-website">
-							<div class="hover-state align-right">
-								<p>The title</p>
-								<em>Click to see project</em>
-							</div> <!-- end hover-state -->
-							<figure>
-								<a href="portfolio-single.html">
-									<img src="images/stock/portfolio-thumb-4.jpg" alt="Portfolio entry" />
-								</a>
-							</figure>
-						</li>
-						<li class="col-md-4 box portfolio-entry cat-print cat-website">
-							<div class="hover-state align-right">
-								<p>The title</p>
-								<em>Click to see project</em>
-							</div> <!-- end hover-state -->
-							<figure>
-								<a href="portfolio-single.html">
-									<img src="images/stock/portfolio-thumb-5.jpg" alt="Portfolio entry" />
-								</a>
-							</figure>
-						</li>
-						<li class="col-md-4 box portfolio-entry cat-ios-apps">
-							<div class="hover-state align-right">
-								<p>The title</p>
-								<em>Click to see project</em>
-							</div> <!-- end hover-state -->
-							<figure>
-								<a href="portfolio-single.html">
-									<img src="images/stock/portfolio-thumb-6.jpg" alt="Portfolio entry" />
-								</a>
-							</figure>
-						</li>
+					<?php endwhile; ?>
 					</ul>
+				<?php else : ?>
+			<div class="middle-container section-content">
+				<div class="container box section-content align-center">
+					<h2>No Posts were found.</h2>
+				</div> <!-- end container for else -->
+			</div>	<!-- end middle-container for else -->
+				<?php endif ?>
+
+				<?php 
+				global $wp_query;
+
+				if ( $wp_query->max_num_pages > 1 ) : ?>
 
 					<div class="box align-center portfolio-nav">
 						<ul class="inline">
-							<li><a href="#" class="btn">&larr; Previous Page</a></li>
-							<li><a href="#" class="btn">Next Page &rarr;</a></li>
+							<li><?php previous_posts_link('&larr; Previous Page', $wp_query->max_num_pages ); ?></li>
+							<li><?php next_posts_link('Next Page &rarr;', $wp_query->max_num_pages ); ?></li>
 						</ul>
 					</div> <!-- end cta -->
+				
+				<?php endif; ?>
 
 				</div> <!-- end container -->
 			</div> <!-- end middle-container -->
@@ -98,3 +92,29 @@
 
 
 <?php get_footer(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

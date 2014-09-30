@@ -36,6 +36,11 @@ ul.row {
 					color: @primary;
 				}
 			}
+
+			&.current-menu-item a,
+			&.current_page_item a {
+				color: @intro-color-1;
+			}
 		}
 	}
 }
@@ -119,10 +124,18 @@ ul.row {
 
 .portfolio-header {
 	margin: 1.5em auto;
+
+	li a {
+		.btn();
+	}
 }
 
 .portfolio-nav {
 	padding: 1.5em 0;
+
+	ul li a {
+		.btn();
+	}
 }
 
 .portfolio-image-list {

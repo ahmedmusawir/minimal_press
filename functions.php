@@ -14,7 +14,8 @@ define('IMAGES', THEMEROOT.'/images');
 function register_my_menus()
 {
 	register_nav_menus(array(
-			'main-menu' => 'Main Menu'
+			'main-menu' => 'Main Menu',
+			'category-menu' => 'Category Menu'
 		)
 	);
 }
@@ -33,6 +34,31 @@ if ( function_exists('add_theme_support')) {
 }
 
 /*-----  End of Add Theme Support for Post Thumbnails  ------*/
+
+/*=====================================
+=            Load JS Files            =
+=====================================*/
+    /**
+	 * Enqueue scripts
+	 *
+	 * @param string $handle Script name
+	 * @param string $src Script url
+	 * @param array $deps (optional) Array of script names on which this script depends
+	 * @param string|bool $ver (optional) Script version (used for cache busting), set to null to disable
+	 * @param bool $in_footer (optional) Whether to enqueue the script before </head> or before </body>
+	 */
+	function load_custom_scripts() {
+		wp_enqueue_script( 'custom_scripts', THEMEROOT . '/js/custom.js', array( 'jquery' ), false, true);
+	}
+
+	add_action( 'wp_enqueue_scripts', 'load_custom_scripts' );
+
+
+
+
+/*-----  End of Load JS Files  ------*/
+
+
 
 
 

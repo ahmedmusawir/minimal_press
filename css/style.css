@@ -1776,6 +1776,10 @@ ul.row {
 .main-nav ul li a:hover {
   color: #e34e47;
 }
+.main-nav ul li.current-menu-item a,
+.main-nav ul li.current_page_item a {
+  color: #2eb4e8;
+}
 /*======================================
 =            MIDDLE CONTENT            =
 ======================================*/
@@ -1849,8 +1853,94 @@ ul.row {
 .portfolio-header {
   margin: 1.5em auto;
 }
+.portfolio-header li a {
+  background-color: #f7f7f7;
+  color: #2b2b2b;
+  display: inline-block;
+  font-size: 14px;
+  height: 32px;
+  padding: 5px 16px;
+  text-decoration: none;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-background-clip: padding-box;
+  -o-background-clip: padding-box;
+  -moz-background-clip: padding;
+  -ms-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transition: background-color 0.4s ease-out;
+  -o-transition: background-color 0.4s ease-out;
+  -moz-transition: background-color 0.4s ease-out;
+  -ms-transition: background-color 0.4s ease-out;
+  transition: background-color 0.4s ease-out;
+}
+.portfolio-header li a:hover {
+  background-color: #1a2128;
+  color: white;
+  text-decoration: none;
+}
+.portfolio-header li a:active {
+  background-color: white;
+  font-weight: bold;
+}
+.portfolio-header li a:active:hover {
+  color: inherit;
+}
+.portfolio-header li a.active {
+  background-color: white;
+  font-weight: bold;
+}
+.portfolio-header li a.active:hover {
+  color: inherit;
+}
 .portfolio-nav {
   padding: 1.5em 0;
+}
+.portfolio-nav ul li a {
+  background-color: #f7f7f7;
+  color: #2b2b2b;
+  display: inline-block;
+  font-size: 14px;
+  height: 32px;
+  padding: 5px 16px;
+  text-decoration: none;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-background-clip: padding-box;
+  -o-background-clip: padding-box;
+  -moz-background-clip: padding;
+  -ms-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transition: background-color 0.4s ease-out;
+  -o-transition: background-color 0.4s ease-out;
+  -moz-transition: background-color 0.4s ease-out;
+  -ms-transition: background-color 0.4s ease-out;
+  transition: background-color 0.4s ease-out;
+}
+.portfolio-nav ul li a:hover {
+  background-color: #1a2128;
+  color: white;
+  text-decoration: none;
+}
+.portfolio-nav ul li a:active {
+  background-color: white;
+  font-weight: bold;
+}
+.portfolio-nav ul li a:active:hover {
+  color: inherit;
+}
+.portfolio-nav ul li a.active {
+  background-color: white;
+  font-weight: bold;
+}
+.portfolio-nav ul li a.active:hover {
+  color: inherit;
 }
 .portfolio-image-list li {
   margin-bottom: 1.5em;

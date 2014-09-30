@@ -2,30 +2,34 @@
 =            CUSTOM JAVASCRIPT            =
 =========================================*/
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function(jQuery) {
 
-	$('#portfolio-sorting li a').on('click', function (event) {
+	// Setting the active class to "All" button
+	jQuery('#portfolio-sorting li:first-child a').addClass('active');
+
+	jQuery('#portfolio-sorting li a').on('click', function (event) {
+		event.preventDefault();
 		//Remove the current active className
 		// alert('clicked');
-		$('#portfolio-sorting li a.active').removeClass('active');
+		jQuery('#portfolio-sorting li a.active').removeClass('active');
 
 		//Add active class to the clicked button 
-		$(this).addClass('active');
+		jQuery(this).addClass('active');
 
 		// Get the button text (filter value)
-		var filterValue = 'cat-' + $(this).text().toLowerCase().replace(' ', '-');
+		var filterValue = 'cat-' + jQuery(this).text().toLowerCase().replace(' ', '-');
 		// console.log(filterValue);
 		
 		if( filterValue === "cat-all") {
-			$('.portfolio-entry').removeClass('hidden');
+			jQuery('.portfolio-entry').removeClass('hidden');
 		} else {
 			// Else, we find the portfolio entries that match the clicked button
 			// And then add the class of .hidden
-			$('.portfolio-entry').each(function () {
-				if (! $(this).hasClass(filterValue)) {
-					$(this).addClass('hidden');	
+			jQuery('.portfolio-entry').each(function () {
+				if (! jQuery(this).hasClass(filterValue)) {
+					jQuery(this).addClass('hidden');	
 				} else {
-					$(this).removeClass('hidden');
+					jQuery(this).removeClass('hidden');
 				}
 			});
 		}
