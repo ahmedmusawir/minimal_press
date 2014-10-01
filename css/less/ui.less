@@ -121,6 +121,15 @@ hr {
 		&:hover {
 			background-color: darken(@light-bg, 2%);
 		}
+
+		&.error {
+			background-color: @light-error;
+
+			label,
+			input {
+				color: @error;
+			}
+		}
 	}
 
 	label {
